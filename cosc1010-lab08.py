@@ -63,6 +63,28 @@ def slope_intercept(m, b, low_bound, up_bound):
         y_values.append(y)
     return y_values
 
+while True:
+    m = input("Enter Slope (m) or exit to quit: ")
+    if m.lower() == 'exit': 
+        break
+    b = input("Enter intercept (b): ")
+    low_bound = input("Enter Lower Bound for x: ")
+    up_bound = input("Enter upper Bound for x: ")
+
+    m = int_check(m)
+    b = int_check(b)
+    low_bound = int_check(low_bound)
+    up_bound = int_check(up_bound)
+
+    if isinstance(m, (int, float)) and isinstance(b, (int, float)) \
+        and isinstance(low_bound, int) and isinstance(up_bound, int):
+        y_values = slope_intercept(m, b, low_bound, up_bound)
+        print("y values:", y_values)
+    else:
+        print("Please enter actual numbers!")
+    
+
+
 print("*" * 75)
 
 # Write a function to solve the quadratic formula
@@ -93,42 +115,23 @@ def quad_form(a, b, c):
     return first_root, second_root
 
 
-while True:
-    m = input("Enter Slope (m) or exit to quit: ")
-    if m.lower() == 'exit': 
-        break
-    b = input("Enter intercept (b): ")
-    low_bound = input("Enter Lower Bound for x: ")
-    up_bound = input("Enter upper Bound for x: ")
-
-    m = int_check(m)
-    b = int_check(b)
-    low_bound = int_check(low_bound)
-    up_bound = int_check(up_bound)
-
-    if isinstance(m, (int, float)) and isinstance(b, (int, float)) \
-        and isinstance(low_bound, int) and isinstance(up_bound, int):
-        y_values = slope_intercept(m, b, low_bound, up_bound)
-        print("y values:", y_values)
-    else:
-        print("Please enter actual numbers!")
     
-    while True:
-        a = input("Enter coefficient a: ")
-        if a.lower() == 'exit':
-            break
-        b = input("Enter coefficient b: ")
-        c = input("Enter coefficient c: ")
+while True:
+    a = input("Enter coefficient a: ")
+    if a.lower() == 'exit':
+        break
+    b = input("Enter coefficient b: ")
+    c = input("Enter coefficient c: ")
 
-        a = int_check(a)
-        b = int_check(b)
-        c = int_check(c)
+    a = int_check(a)
+    b = int_check(b)
+    c = int_check(c)
 
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)) and isinstance(c, (int, float)):
-            roots = quad_form(a, b, c)
-            print("Roots", roots)
-        else:
-            print("Please enter actual number!")
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)) and isinstance(c, (int, float)):
+        roots = quad_form(a, b, c)
+        print("Roots", roots)
+    else:
+        print("Please enter actual number!")
 
 
 
